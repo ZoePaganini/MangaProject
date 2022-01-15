@@ -60,6 +60,7 @@ class _HomePageNavigatorState extends State<HomePageNavigator> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Constants.black,
       body: _currentWidget,
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.shifting,

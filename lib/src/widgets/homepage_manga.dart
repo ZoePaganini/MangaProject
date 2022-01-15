@@ -6,11 +6,10 @@ class MangaHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView.count(
       crossAxisCount: 1,
-      mainAxisSpacing: 20.0,
+      mainAxisSpacing: 1.0,
       children: [
         MangaSwiper(),
         MangaSlider(),
-        MangaSlider()
       ],);
   }
 }
@@ -27,25 +26,38 @@ class MangaSwiper extends StatelessWidget {
       // Aquest multiplicador estableix el tant per cent de pantalla ocupada 50%
       height: size.height * 0.5,
       // color: Colors.red,
-      child: Swiper(
-        itemCount: 10,
-        layout: SwiperLayout.STACK,
-        itemWidth: size.width * 0.6,
-        itemHeight: size.height * 0.4,
-        itemBuilder: (BuildContext context, int index){
-
-          return GestureDetector(
-            onTap: () => Navigator.pushNamed(context, 'details', arguments: 'detalls peli'),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: FadeInImage(
-                placeholder: AssetImage('assets/waiting-image.gif'),
-                image: NetworkImage('https://static.wikia.nocookie.net/jujutsu-kaisen/images/8/8e/Jujutsu_Kaisen_Manga_Volumen_14_JP.jpg/revision/latest?cb=20201216182108&path-prefix=es'),
-                fit: BoxFit.contain
-               ),
-            ),
-          );
-        },
+      child: Column(
+        children: [
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: 20),
+            child: Text('Popular', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+          ),
+          SizedBox(height: 10,),
+          Swiper(
+            itemCount: 10,
+            layout: SwiperLayout.STACK,
+            itemWidth: size.width,
+            itemHeight: size.height * 0.4,
+            itemBuilder: (BuildContext context, int index){
+              return Column(
+                children: [
+                  GestureDetector(
+                    onTap: () => Navigator.pushNamed(context, 'details', arguments: 'detalls peli'),
+                    child: ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                      child: FadeInImage(
+                        placeholder: AssetImage('assets/waiting-image.gif'),
+                        image: NetworkImage('https://static.wikia.nocookie.net/jujutsu-kaisen/images/8/8e/Jujutsu_Kaisen_Manga_Volumen_14_JP.jpg/revision/latest?cb=20201216182108&path-prefix=es'),
+                        fit: BoxFit.fitHeight,
+                        height: 320,
+                      ),
+                    ),
+                  ),
+                ],
+              );
+            },
+          )
+        ],
       )
     );
   }
@@ -103,9 +115,9 @@ class MangaSlider extends StatelessWidget {
         children: [
           Padding(
             padding: EdgeInsets.symmetric(horizontal: 20),
-            child: Text('Populars', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+            child: Text('All Mangas', style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
           ),
-          SizedBox(height: 5,),
+          SizedBox(height: 20,),
           Expanded(
             child: ListView.builder(
               scrollDirection: Axis.horizontal,

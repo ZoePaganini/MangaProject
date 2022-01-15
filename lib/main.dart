@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:manga_project/src/constants/constants.dart';
 import 'package:manga_project/src/pages/main_page.dart';
 import 'package:manga_project/src/pages/viewer_manga_page.dart';
 
@@ -20,6 +21,7 @@ class MyApp extends StatelessWidget {
         'viewer': (BuildContext context) => VisualizarCapitulo(),
       },
       theme: ThemeData.dark(),
+      color: Constants.black,
     );
   }
 }
