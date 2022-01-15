@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:manga_project/src/pages/main_page.dart';
 import 'package:manga_project/src/pages/viewer_manga_page.dart';
 import 'package:manga_project/src/pojos/manga.dart';
 
@@ -13,9 +14,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'fulldeMangaDealerPlugconCorte',
-      initialRoute: 'viewer',
+      initialRoute: 'main',
       routes: {
-        //'main': (BuildContext context) => Main_Page(),
+        'main': (BuildContext context) => HomePageNavigator(),
         //'preview': (BuildContext context) => Preview_Manga_Page(),
         'viewer': (BuildContext context) => VisualizarCapitulo(),
       },
