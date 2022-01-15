@@ -3,12 +3,20 @@ import 'package:manga_project/src/pojos/capitulo.dart';
 class Manga {
   var nombre;
   var descripcion;
+  var autor;
+  var status;
+  var genero;
+  var rating;
   late List<Capitulo> capitulos;
 
-  Manga(var nombre, var descripcion, List<Capitulo> capitulos){
+  Manga(var nombre, var descripcion, var autor, var status, var genero, var rating, List<Capitulo> capitulos){
     this.nombre = nombre;
     this.descripcion = descripcion;
     this.capitulos = capitulos;
+    this.autor = autor;
+    this.genero = genero;
+    this.status = status;
+    this.rating = rating;
   }
 
   String get nombreManga {
