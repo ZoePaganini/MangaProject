@@ -7,7 +7,7 @@ class PageScroller extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ListView.builder(
-          scrollDirection: Axis.horizontal,
+          scrollDirection: Axis.vertical,
           itemCount: _listaPaginas.length,
           itemBuilder: (BuildContext context, int index) {
             final pagina = _listaPaginas[index];

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:manga_project/src/pages/main_page.dart';
 import 'package:manga_project/src/pages/viewer_manga_page.dart';
-import 'package:manga_project/src/pojos/manga.dart';
 
 void main() {
   

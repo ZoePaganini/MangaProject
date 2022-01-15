@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:manga_project/src/widgets/page_scroller.dart';
 import 'package:manga_project/src/widgets/page_swiper.dart';
 
-late bool _modoLectura;
+bool _modoLectura;
 
 class VisualizarCapitulo extends StatelessWidget {
   @override
@@ -18,8 +18,8 @@ class VisualizarCapitulo extends StatelessWidget {
          
         ],
       ),
-      body: //PageScroller(),
-        PageSwiper(),
+      body: PageScroller(),
+        //PageSwiper(),
     );
   }
 }

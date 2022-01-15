@@ -3,7 +3,7 @@ import 'package:manga_project/src/pojos/pagina.dart';
 class Capitulo {
   var numero;
   var nombre;
-  late List<Pagina> paginas;
+  List<Pagina> paginas;
 
   int get numeroCapitulo {
     return numero;
