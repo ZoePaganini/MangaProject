@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:manga_project/src/pages/preview/manga_info_btn.dart';
-import 'package:manga_project/src/pages/preview/vert_divider.dart';
+import 'package:manga_project/src/widgets/manga_info_btn.dart';
+import 'package:manga_project/src/widgets/vert_divider.dart';
 
 class PreviewMangaPage extends StatelessWidget {
   final String mangaImg, mangaStatus, mangaAuthor;

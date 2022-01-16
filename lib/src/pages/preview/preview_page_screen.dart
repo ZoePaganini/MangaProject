@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:manga_project/src/pages/preview/hor_divider.dart';
 import 'package:manga_project/src/pages/preview/preview_manga_chapter_list.dart';
 import 'package:manga_project/src/pages/preview/preview_manga_desc.dart';
-import 'package:manga_project/src/pages/preview/preview_manga_page.dart';
+import 'package:manga_project/src/pages/preview/preview_manga_info.dart';
+import 'package:manga_project/src/widgets/hor_divider.dart';
 import 'package:web_scraper/web_scraper.dart';
 
 class PreviewPageScreen extends StatefulWidget {

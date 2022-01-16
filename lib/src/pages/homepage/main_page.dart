@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:manga_project/src/constants/constants.dart';
 import 'package:manga_project/src/widgets/bot_nav_item.dart';
-import 'package:manga_project/src/widgets/homepage_latest.dart';
-import 'package:manga_project/src/widgets/homepage_manga.dart';
+import 'package:manga_project/src/pages/homepage/homepage_latest.dart';
+import 'package:manga_project/src/pages/homepage/homepage_manga.dart';
 import 'package:web_scraper/web_scraper.dart';
 
 class HomePageNavigator extends StatefulWidget {

@@ -44,10 +44,13 @@ class MangaSwiper extends StatelessWidget {
             itemHeight: size.height * 0.4,
             itemBuilder: (BuildContext context, int index){
               List<String> _popularManga = ['https://i0.wp.com/elpalomitron.com/wp-content/uploads/2020/07/Rese%C3%B1a-de-Jujutsu-Kaisen-destacada-El-Palomitr%C3%B3n.jpg?resize=1100%2C600&ssl=1', 'https://i2.wp.com/www.senpai.com.mx/wp-content/uploads/2021/07/Manga-de-Chainsaw-Man-alcanza-11-millones-de-copias-en-circulacion.jpg?fit=1280%2C685&ssl=1', 'https://p4.wallpaperbetter.com/wallpaper/204/423/604/1920x1080-px-manga-sasaki-kojirou-vagabond-animals-squirrels-hd-art-wallpaper-preview.jpg'];
+              List<String> _mangaSites = ['https://chap.manganelo.com/manga-ba116346','https://chap.manganelo.com/manga-dn117633','https://chap.manganelo.com/manga-je92124'];
               return Column(
                 children: [
                   GestureDetector(
-                    onTap: () => Navigator.pushNamed(context, 'details', arguments: 'detalls peli'),
+                    onTap: () { 
+                      Navigator.pushNamed(context, 'preview', arguments: _mangaSites[index]);
+                    },
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(20),
                       child: FadeInImage(
