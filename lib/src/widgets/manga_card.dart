@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:manga_project/src/pages/preview/preview_page_screen.dart';
 
 class MangaCard extends StatelessWidget {
   
-  final String mangaImg, mangaTitle;
-  const MangaCard({Key key, this.mangaImg, this.mangaTitle});
-
+  final String mangaImg, mangaTitle, mangaUrlList;
+  const MangaCard({Key key, this.mangaImg, this.mangaTitle, this.mangaUrlList})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -15,7 +16,14 @@ class MangaCard extends StatelessWidget {
       child: Column(
         children: [
           GestureDetector(
-            onTap: () => Navigator.pushNamed(context, 'details', arguments: 'detalls peli'),
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (context) => PreviewPageScreen(
+                mangaImg: mangaImg,
+                mangaTitle: mangaTitle,
+                mangaLink: mangaUrlList,
+              ))
+            ),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
               child: FadeInImage(

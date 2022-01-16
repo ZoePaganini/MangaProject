@@ -5,6 +5,11 @@ import 'package:manga_project/src/widgets/page_swiper.dart';
 bool _modoLectura;
 
 class VisualizarCapitulo extends StatelessWidget {
+  final int numberChapter;
+  final String chapter;
+  final String chapterTitle;
+  const VisualizarCapitulo({Key key, this.numberChapter, this.chapter, this.chapterTitle}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -12,13 +17,13 @@ class VisualizarCapitulo extends StatelessWidget {
       leading: IconButton(
         onPressed: () {}, 
         icon: Icon(Icons.keyboard_arrow_left)),
-        title: Text('Titulo del Capitulo'),
+        title: Text(''),
         backgroundColor: Colors.transparent,
         actions: <Widget>[
          
         ],
       ),
-      body: PageScroller(),
+      body: PageScroller(mangaLink: chapter),
         //PageSwiper(),
     );
   }

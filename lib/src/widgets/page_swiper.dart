@@ -27,21 +27,9 @@ class PageSwiper extends StatelessWidget {
                 fit: BoxFit.scaleDown,
                 ),
           );
-          /*return SizedBox.expand(
-            child: Image.network(
-              'https://cdn.readjujutsukaisen.com/file/mangap/2085/10170000/1.jpeg',
-              fit: BoxFit.scaleDown,
-            ),
-          );*/
         },
       ),
     );
   }
 }
 
-/*List<NetworkImage> _networkImage() {
-  List<NetworkImage> imagenes;
-  
-  return imagenes;
-}
-*/

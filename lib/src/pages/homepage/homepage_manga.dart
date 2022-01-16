@@ -1,9 +1,16 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
+import 'package:manga_project/src/constants/constants.dart';
+import 'package:manga_project/src/pages/preview/preview_manga_info.dart';
+import 'package:manga_project/src/pages/preview/preview_page_screen.dart';
 import 'package:manga_project/src/widgets/manga_card.dart';
 
 class MangaHome extends StatelessWidget {  
-  
+  final List<Map<String, dynamic>> mangaList;
+  final List<Map<String, dynamic>> mangaUrlList;
+
+  const MangaHome({Key key, this.mangaList, this.mangaUrlList})
+      : super(key: key);
   
   @override
   Widget build(BuildContext context) {
@@ -11,17 +18,24 @@ class MangaHome extends StatelessWidget {
       crossAxisCount: 1,
       mainAxisSpacing: 1.0,
       children: [
-        MangaSwiper(),
-        MangaSlider(),
+        MangaSwiper(
+          mangaList: mangaList,
+        ),
+        MangaSlider(
+          mangaList: mangaList,
+          mangaUrlList: mangaUrlList,
+        ),
       ],);
   }
 }
 
 class MangaSwiper extends StatelessWidget {
 
+  final List<Map<String, dynamic>> mangaList;
+  const MangaSwiper({Key key, this.mangaList})
+      : super(key: key);
   @override
   Widget build(BuildContext context) {
-
     final size = MediaQuery.of(context).size;
 
     return Container(
@@ -44,12 +58,17 @@ class MangaSwiper extends StatelessWidget {
             itemHeight: size.height * 0.4,
             itemBuilder: (BuildContext context, int index){
               List<String> _popularManga = ['https://i0.wp.com/elpalomitron.com/wp-content/uploads/2020/07/Rese%C3%B1a-de-Jujutsu-Kaisen-destacada-El-Palomitr%C3%B3n.jpg?resize=1100%2C600&ssl=1', 'https://i2.wp.com/www.senpai.com.mx/wp-content/uploads/2021/07/Manga-de-Chainsaw-Man-alcanza-11-millones-de-copias-en-circulacion.jpg?fit=1280%2C685&ssl=1', 'https://p4.wallpaperbetter.com/wallpaper/204/423/604/1920x1080-px-manga-sasaki-kojirou-vagabond-animals-squirrels-hd-art-wallpaper-preview.jpg'];
-              List<String> _mangaSites = ['https://chap.manganelo.com/manga-ba116346','https://chap.manganelo.com/manga-dn117633','https://chap.manganelo.com/manga-je92124'];
               return Column(
                 children: [
                   GestureDetector(
                     onTap: () { 
-                      Navigator.pushNamed(context, 'preview', arguments: _mangaSites[index]);
+                      final String opcion = _popularManga[index];
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(builder: (context) => PreviewPageScreen(
+                          mangaImg: Constants.popularMangaImages[index],
+                          mangaTitle: Constants.popularMangaTitles[index],
+                          mangaLink: Constants.popularMangaSites[index])));
                     },
                     child: ClipRRect(
                       borderRadius: BorderRadius.circular(20),
@@ -64,7 +83,7 @@ class MangaSwiper extends StatelessWidget {
                 ],
               );
             },
-          )
+          ),
         ],
       )
     );
@@ -73,6 +92,11 @@ class MangaSwiper extends StatelessWidget {
 
 class MangaSlider extends StatelessWidget {
   // const MovieSlider({Key? key}) : super(key: key);
+  final List<Map<String, dynamic>> mangaList;
+  final List<Map<String, dynamic>> mangaUrlList;
+
+  const MangaSlider({Key key, this.mangaList, this.mangaUrlList})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -92,10 +116,11 @@ class MangaSlider extends StatelessWidget {
             child: ListView.builder(
               physics: BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
-              itemCount: 20,
+              itemCount: mangaList.length,
               itemBuilder: (_, int index) => MangaCard(
-                mangaImg: 'https://www.normaeditorial.com/upload/media/albumes/0001/16/15bb917dd73b8961b8ec1551b071f636dccb3cd6.jpeg',
-                mangaTitle: 'Jujutsu Kaisen',
+                mangaImg: mangaList[index]['attributes']['src'],
+                mangaTitle: mangaList[index]['attributes']['alt'],
+                mangaUrlList: mangaUrlList[index]['attributes']['href'],
               )
             ),
           )

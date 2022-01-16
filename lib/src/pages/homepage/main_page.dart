@@ -19,11 +19,16 @@ class _HomePageNavigatorState extends State<HomePageNavigator> {
 
   bool mangaLoaded = false;
   List<Map<String, dynamic>> mangaList;
+  List<Map<String, dynamic>> mangaUrlList;
+
 
   void _loadScreen() {
     switch(_selectedIndex) {
       case 0: return setState(() => _currentWidget = LatestChapters());
-      case 1: return setState(() => _currentWidget = MangaHome());
+      case 1: return setState(() => _currentWidget = MangaHome(
+        mangaList: mangaList,
+        mangaUrlList: mangaUrlList,
+      ));
     }
   }
 
@@ -37,12 +42,17 @@ class _HomePageNavigatorState extends State<HomePageNavigator> {
   void fetchManga() async {
     final webscraper = WebScraper(Constants.mangaUrl);
 
-    if (await webscraper.loadWebPage('/read')) {
+    if (await webscraper.loadWebPage('/www')) {
       mangaList = webscraper.getElement(
         'div.container-main-left > div.panel-content-homepage > div > a > img', 
         ['src', 'alt']
       );
 
+      mangaUrlList = webscraper.getElement(
+        'div.container-main-left > div.panel-content-homepage > div > a',
+        ['href'],
+      );  
+    
       print(mangaList);
 
       setState(() {
@@ -63,7 +73,9 @@ class _HomePageNavigatorState extends State<HomePageNavigator> {
     Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Constants.black,
-      body: _currentWidget,
+      body: mangaLoaded
+          ? _currentWidget
+          : Center(child: CircularProgressIndicator()),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.shifting,
         selectedItemColor: Constants.amber,

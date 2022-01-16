@@ -15,12 +15,26 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'fulldeMangaDealerPlugconCorte',
-      initialRoute: 'main',
+      home: HomePageNavigator(),
+      /*initialRoute: 'main',
       routes: {
         'main': (BuildContext context) => HomePageNavigator(),
-        'preview': (BuildContext context, String url) => PreviewPageScreen(url),
-        'viewer': (BuildContext context) => VisualizarCapitulo(),
+        //'preview': (BuildContext context) => PreviewPageScreen(),
+        //'viewer': (BuildContext context) => VisualizarCapitulo(),
       },
+      onGenerateRoute: (RouteSettings settings) {
+        var manga;
+        String routeName = settings.name;
+        switch (routeName){
+          case PreviewPageScreen.routeName:
+            manga = PreviewPageScreen(mangaLink: settings.arguments,);
+            break;
+          case VisualizarCapitulo.routeName:
+            manga = VisualizarCapitulo();
+            break;
+        }
+        return MaterialPageRoute(builder : (context) => manga);
+      },*/
       theme: ThemeData.dark(),
     );
   }
