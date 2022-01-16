@@ -1,8 +1,12 @@
 import 'package:flutter/material.dart';
+<<<<<<< HEAD
 import 'package:manga_project/src/pages/preview/preview_manga_page.dart';
 import 'package:manga_project/src/pages/preview/preview_page_screen.dart';
+=======
+import 'package:manga_project/src/constants/constants.dart';
+import 'package:manga_project/src/pages/main_page.dart';
+>>>>>>> 0adcfd17b64159a92b2a69d9b6bd8b4412f45c87
 import 'package:manga_project/src/pages/viewer_manga_page.dart';
-import 'package:manga_project/src/pojos/manga.dart';
 
 void main() {
   runApp(MyApp());
@@ -14,6 +18,7 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       title: 'fulldeMangaDealerPlugconCorte',
+<<<<<<< HEAD
       initialRoute: 'preview',
       routes: {
         //'main': (BuildContext context) => Main_Page(),
@@ -23,8 +28,16 @@ class MyApp extends StatelessWidget {
               mangaLink: "https://chap.manganelo.com/manga-ba116346",
             ),
         //'viewer': (BuildContext context) => VisualizarCapitulo(),
+=======
+      initialRoute: 'main',
+      routes: {
+        'main': (BuildContext context) => HomePageNavigator(),
+        //'preview': (BuildContext context) => Preview_Manga_Page(),
+        'viewer': (BuildContext context) => VisualizarCapitulo(),
+>>>>>>> 0adcfd17b64159a92b2a69d9b6bd8b4412f45c87
       },
       theme: ThemeData.dark(),
+      color: Constants.black,
     );
   }
 }
