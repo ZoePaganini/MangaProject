@@ -34,31 +34,33 @@ class _HomePageNavigatorState extends State<HomePageNavigator> {
     _loadScreen();
   }
 
-  /*void fetchManga() async {
+  void fetchManga() async {
     final webscraper = WebScraper(Constants.mangaUrl);
 
     if (await webscraper.loadWebPage('/read')) {
       mangaList = webscraper.getElement(
-        'html > body > div.container > div.main-wrapper > div.leftCol > div#contentstory > div.doreamon > div.itemupdate > a > img', 
-        ['src']
+        'div.container-main-left > div.panel-content-homepage > div > a > img', 
+        ['src', 'alt']
       );
+
       print(mangaList);
 
       setState(() {
         mangaLoaded = true;
       });
     }
-  }*/
+  }
 
   @override
   void initState() {
     super.initState();
-    //fetchManga();
+    fetchManga();
     _loadScreen();
   }
 
   @override
   Widget build(BuildContext context) {
+    Size screenSize = MediaQuery.of(context).size;
     return Scaffold(
       backgroundColor: Constants.black,
       body: _currentWidget,

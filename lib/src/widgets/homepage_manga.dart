@@ -1,7 +1,10 @@
 import 'package:card_swiper/card_swiper.dart';
 import 'package:flutter/material.dart';
+import 'package:manga_project/src/widgets/manga_card.dart';
 
 class MangaHome extends StatelessWidget {  
+  
+  
   @override
   Widget build(BuildContext context) {
     return GridView.count(
@@ -34,11 +37,13 @@ class MangaSwiper extends StatelessWidget {
           ),
           SizedBox(height: 10,),
           Swiper(
-            itemCount: 10,
+            containerWidth: 1000,
+            itemCount: 3,
             layout: SwiperLayout.STACK,
             itemWidth: size.width,
             itemHeight: size.height * 0.4,
             itemBuilder: (BuildContext context, int index){
+              List<String> _popularManga = ['https://i0.wp.com/elpalomitron.com/wp-content/uploads/2020/07/Rese%C3%B1a-de-Jujutsu-Kaisen-destacada-El-Palomitr%C3%B3n.jpg?resize=1100%2C600&ssl=1', 'https://i2.wp.com/www.senpai.com.mx/wp-content/uploads/2021/07/Manga-de-Chainsaw-Man-alcanza-11-millones-de-copias-en-circulacion.jpg?fit=1280%2C685&ssl=1', 'https://p4.wallpaperbetter.com/wallpaper/204/423/604/1920x1080-px-manga-sasaki-kojirou-vagabond-animals-squirrels-hd-art-wallpaper-preview.jpg'];
               return Column(
                 children: [
                   GestureDetector(
@@ -47,8 +52,8 @@ class MangaSwiper extends StatelessWidget {
                       borderRadius: BorderRadius.circular(20),
                       child: FadeInImage(
                         placeholder: AssetImage('assets/waiting-image.gif'),
-                        image: NetworkImage('https://static.wikia.nocookie.net/jujutsu-kaisen/images/8/8e/Jujutsu_Kaisen_Manga_Volumen_14_JP.jpg/revision/latest?cb=20201216182108&path-prefix=es'),
-                        fit: BoxFit.fitHeight,
+                        image: NetworkImage(_popularManga[index]),
+                        fit: BoxFit.cover,
                         height: 320,
                       ),
                     ),
@@ -59,44 +64,6 @@ class MangaSwiper extends StatelessWidget {
           )
         ],
       )
-    );
-  }
-}
-
-class _MangaPoster extends StatelessWidget {
-  const _MangaPoster({Key key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      width: 130,
-      height: 190,
-      // color: Colors.green,
-      margin: EdgeInsets.symmetric(horizontal: 10),
-      child: Column(
-        children: [
-          GestureDetector(
-            onTap: () => Navigator.pushNamed(context, 'details', arguments: 'detalls peli'),
-            child: ClipRRect(
-              borderRadius: BorderRadius.circular(20),
-              child: FadeInImage(
-                placeholder: AssetImage('assets/waiting-image.gif'),
-                image: NetworkImage('https://www.normaeditorial.com/upload/media/albumes/0001/16/15bb917dd73b8961b8ec1551b071f636dccb3cd6.jpeg'),
-                width: 130,
-                height: 190,
-                fit: BoxFit.cover,
-              ),
-            ),
-          ),
-          SizedBox(height: 5,),
-          Text(
-            'Titulo del manga',
-            maxLines: 2,
-            overflow: TextOverflow.ellipsis,
-            textAlign: TextAlign.center,
-          )
-        ],
-      ),
     );
   }
 }
@@ -120,9 +87,13 @@ class MangaSlider extends StatelessWidget {
           SizedBox(height: 20,),
           Expanded(
             child: ListView.builder(
+              physics: BouncingScrollPhysics(),
               scrollDirection: Axis.horizontal,
               itemCount: 20,
-              itemBuilder: (_, int index) => _MangaPoster()
+              itemBuilder: (_, int index) => MangaCard(
+                mangaImg: 'https://www.normaeditorial.com/upload/media/albumes/0001/16/15bb917dd73b8961b8ec1551b071f636dccb3cd6.jpeg',
+                mangaTitle: 'Jujutsu Kaisen',
+              )
             ),
           )
         ],

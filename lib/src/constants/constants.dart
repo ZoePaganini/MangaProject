@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 class Constants {
   Constants._();
 
-  static const String mangaUrl = "https://mangakakalot.com/";
+  static const String mangaUrl = "https://ww4.manganelo.tv";
 
   static const Color darkgrey = Color.fromRGBO(35,35,35, 1);
   static const Color lightgrey = Color.fromRGBO(211, 211, 211, 1);

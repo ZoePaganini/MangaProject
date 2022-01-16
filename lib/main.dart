@@ -21,7 +21,6 @@ class MyApp extends StatelessWidget {
         'viewer': (BuildContext context) => VisualizarCapitulo(),
       },
       theme: ThemeData.dark(),
-      color: Constants.black,
     );
   }
 }
