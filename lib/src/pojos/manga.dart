@@ -9,7 +9,8 @@ class Manga {
   var rating;
   List<Capitulo> capitulos;
 
-  Manga(var nombre, var descripcion, var autor, var status, var genero, var rating, List<Capitulo> capitulos){
+  Manga(var nombre, var descripcion, var autor, var status, var genero,
+      var rating, List<Capitulo> capitulos) {
     this.nombre = nombre;
     this.descripcion = descripcion;
     this.capitulos = capitulos;

@@ -20,9 +20,8 @@ class Capitulo {
   }
 
   Capitulo(int numero, String nombre, List<Pagina> paginas) {
-      this.numero = numero;
-      this.nombre = nombre;
-      this.paginas = paginas;
-    }
-
+    this.numero = numero;
+    this.nombre = nombre;
+    this.paginas = paginas;
+  }
 }
