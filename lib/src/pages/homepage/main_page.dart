@@ -14,7 +14,7 @@ class HomePageNavigator extends StatefulWidget {
 
 class _HomePageNavigatorState extends State<HomePageNavigator> {
   
-  Widget _currentWidget = SizedBox.expand();
+  Widget _currentWidget = SizedBox();
   int _selectedIndex = 0;
 
   bool mangaLoaded = false;
@@ -24,11 +24,11 @@ class _HomePageNavigatorState extends State<HomePageNavigator> {
 
   void _loadScreen() {
     switch(_selectedIndex) {
-      case 0: return setState(() => _currentWidget = LatestChapters());
-      case 1: return setState(() => _currentWidget = MangaHome(
+      case 0: return setState(() => _currentWidget = MangaHome(
         mangaList: mangaList,
         mangaUrlList: mangaUrlList,
       ));
+      case 1: return setState(() => _currentWidget = LatestChapters());
     }
   }
 
@@ -42,18 +42,27 @@ class _HomePageNavigatorState extends State<HomePageNavigator> {
   void fetchManga() async {
     final webscraper = WebScraper(Constants.mangaUrl);
 
-    if (await webscraper.loadWebPage('/www')) {
-      mangaList = webscraper.getElement(
+    if (await webscraper.loadWebPage('/genero/sobrenatural')) {
+      /*mangaList = webscraper.getElement(
         'div.container-main-left > div.panel-content-homepage > div > a > img', 
         ['src', 'alt']
-      );
+      );*/
 
-      mangaUrlList = webscraper.getElement(
+      mangaList = webscraper.getElement(
+        'div.row.row-eq-height > div.col-xl-3.col-md-3.col-6.manga_portada > div.page-item-detail > div.manga_biblioteca.c-image-hover > a > img',
+        ['src', 'title']);
+      /*mangaUrlList = webscraper.getElement(
         'div.container-main-left > div.panel-content-homepage > div > a',
         ['href'],
+      );*/
+
+      mangaUrlList = webscraper.getElement(
+        'div.row.row-eq-height > div.col-xl-3.col-md-3.col-6.manga_portada > div.page-item-detail > div.manga_biblioteca.c-image-hover > a',
+        ['href']
       );  
     
-      print(mangaList);
+      //print(mangaList);
+      print(mangaUrlList);
 
       setState(() {
         mangaLoaded = true;
@@ -74,7 +83,10 @@ class _HomePageNavigatorState extends State<HomePageNavigator> {
     return Scaffold(
       backgroundColor: Constants.black,
       body: mangaLoaded
-          ? _currentWidget
+          ? MangaHome(
+        mangaList: mangaList,
+        mangaUrlList: mangaUrlList,
+          )
           : Center(child: CircularProgressIndicator()),
       bottomNavigationBar: BottomNavigationBar(
         type: BottomNavigationBarType.shifting,
@@ -82,8 +94,8 @@ class _HomePageNavigatorState extends State<HomePageNavigator> {
         unselectedItemColor: Constants.lightgrey,
         backgroundColor: Constants.black,
         items: [
+          botNavItem(Icons.home, 'Home'),
           botNavItem(Icons.list_alt, 'New chapters'),
-          botNavItem(Icons.book_rounded, 'Manga'),
         ],
         currentIndex: _selectedIndex,
         onTap: _onItemTapped,

@@ -16,7 +16,7 @@ class MangaHome extends StatelessWidget {
   Widget build(BuildContext context) {
     return GridView.count(
       crossAxisCount: 1,
-      mainAxisSpacing: 1.0,
+      mainAxisSpacing: 0.0,
       children: [
         MangaSwiper(
           mangaList: mangaList,
@@ -55,7 +55,7 @@ class MangaSwiper extends StatelessWidget {
             itemCount: 3,
             layout: SwiperLayout.STACK,
             itemWidth: size.width,
-            itemHeight: size.height * 0.4,
+            itemHeight: size.height * 0.5,
             itemBuilder: (BuildContext context, int index){
               List<String> _popularManga = ['https://i0.wp.com/elpalomitron.com/wp-content/uploads/2020/07/Rese%C3%B1a-de-Jujutsu-Kaisen-destacada-El-Palomitr%C3%B3n.jpg?resize=1100%2C600&ssl=1', 'https://i2.wp.com/www.senpai.com.mx/wp-content/uploads/2021/07/Manga-de-Chainsaw-Man-alcanza-11-millones-de-copias-en-circulacion.jpg?fit=1280%2C685&ssl=1', 'https://p4.wallpaperbetter.com/wallpaper/204/423/604/1920x1080-px-manga-sasaki-kojirou-vagabond-animals-squirrels-hd-art-wallpaper-preview.jpg'];
               return Column(
@@ -119,7 +119,7 @@ class MangaSlider extends StatelessWidget {
               itemCount: mangaList.length,
               itemBuilder: (_, int index) => MangaCard(
                 mangaImg: mangaList[index]['attributes']['src'],
-                mangaTitle: mangaList[index]['attributes']['alt'],
+                mangaTitle: mangaList[index]['attributes']['title'],
                 mangaUrlList: mangaUrlList[index]['attributes']['href'],
               )
             ),
