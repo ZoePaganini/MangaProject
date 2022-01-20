@@ -1,12 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:manga_project/src/widgets/manga_info_btn.dart';
 import 'package:manga_project/src/widgets/vert_divider.dart';
+import '../viewer/viewer_manga_page.dart';
 
 class PreviewMangaPage extends StatelessWidget {
-  final String mangaImg, mangaStatus, mangaAuthor;
+  final String mangaImg, mangaType, mangaYear, mangaTitle, mangaLink;
+  final List<Map<String, dynamic>> mangaChapters;
 
   const PreviewMangaPage(
-      {Key key, this.mangaImg, this.mangaStatus, this.mangaAuthor})
+      {Key key,
+      this.mangaImg,
+      this.mangaType,
+      this.mangaYear,
+      this.mangaChapters, this.mangaTitle, this.mangaLink})
       : super(key: key);
 
   @override
@@ -31,7 +37,7 @@ class PreviewMangaPage extends StatelessWidget {
                       fit: BoxFit.cover,
                     ),
                   ),
-                  Text("By $mangaAuthor - $mangaStatus")
+                  Text("${mangaType.trim()} - ${mangaYear.trim()}")
                 ],
               ),
             ),
@@ -42,13 +48,43 @@ class PreviewMangaPage extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                MangaInfoBtn(icon: Icons.play_arrow_outlined, title: "Read"),
-                VertDivider(),
-                MangaInfoBtn(
-                    icon: Icons.format_list_bulleted_sharp, title: "Chapters"),
-                VertDivider(),
-                MangaInfoBtn(icon: Icons.videocam, title: "Video"),
-              ],
+                InkWell(
+                    onTap: () => {
+                      Navigator.push(
+                        context, 
+                        MaterialPageRoute(builder: (context) => MangaReader(
+                          chaptersList: mangaChapters,
+                          chapter: mangaChapters.last['title'].toString().trim(),
+                          chapterLink: mangaChapters.last["attributes"]["href"],
+                          index: mangaChapters.length,
+                          mangaImg: mangaImg,
+                          mangaLink: mangaLink,
+                          mangaTitle: mangaTitle,
+                          )
+                        )
+                      )
+                    },
+                    child: MangaInfoBtn(
+                      icon: Icons.play_arrow_outlined, title: "Leer")),
+                      VertDivider(),
+                      InkWell(
+                        onTap: () => {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => MangaReader(
+                                chaptersList: mangaChapters,
+                                chapter: mangaChapters.first['title'].toString().trim(),
+                                chapterLink: mangaChapters.first["attributes"]["href"],
+                                index: 0,
+                                mangaImg: mangaImg,
+                                mangaLink: mangaLink,
+                                mangaTitle: mangaTitle,
+                                )))
+                        },
+                    child: MangaInfoBtn(
+                        icon: Icons.last_page_outlined, title: "Último")),
+                ],
             ),
           ),
         ],

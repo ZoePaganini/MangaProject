@@ -11,6 +11,7 @@ class MangaDesc extends StatefulWidget {
 
 class _MangaDescState extends State<MangaDesc> {
   bool readMore = false;
+  bool readMoreGenres = false;
 
   void toggleRead() {
     setState(() {
@@ -18,14 +19,32 @@ class _MangaDescState extends State<MangaDesc> {
     });
   }
 
+  void toggleReadGenres() {
+    setState(() {
+      readMoreGenres = !readMoreGenres;
+    });
+  }
+
   Widget overMultiLine() {
-    return (widget.mangaDesc.trim()).split(" ").length > 30
+    return (widget.mangaDesc).length > 30
         ? GestureDetector(
             onTap: toggleRead,
-            child: Text(
-              readMore ? "Read less" : "Read more",
+            child: Center(child: Text(
+              readMore ? "Leer menos" : "Leer más",
               style: TextStyle(color: Colors.lightBlue, fontSize: 14),
-            ),
+            )),
+          )
+        : Container();
+  }
+
+  Widget overMultiLine2() {
+    return (widget.mangaGenres).length > 2
+        ? GestureDetector(
+            onTap: toggleReadGenres,
+            child: Center(child: Text(
+              readMoreGenres ? "Leer menos" : "Leer más",
+              style: TextStyle(color: Colors.lightBlue, fontSize: 14),
+            )),
           )
         : Container();
   }
@@ -40,7 +59,7 @@ class _MangaDescState extends State<MangaDesc> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Text(
-              "Description",
+              "Descripción",
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
@@ -49,7 +68,7 @@ class _MangaDescState extends State<MangaDesc> {
             ),
             Divider(),
             Text(
-              widget.mangaDesc.substring(13).trim(),
+              widget.mangaDesc.toString().trim(),
               style: TextStyle(
                 color: Colors.white,
                 fontSize: 17,
@@ -61,7 +80,7 @@ class _MangaDescState extends State<MangaDesc> {
             overMultiLine(),
             Divider(),
             Text(
-              "Genres",
+              "Géneros",
               style: TextStyle(
                 color: Colors.white,
                 fontWeight: FontWeight.bold,
@@ -70,12 +89,15 @@ class _MangaDescState extends State<MangaDesc> {
             ),
             Divider(),
             Text(
-              widget.mangaGenres,
+              widget.mangaGenres.toString().trim(),
               style: TextStyle(
-                color: Colors.white,
-                fontSize: 17,
+              color: Colors.white,
+              fontSize: 17),
+              maxLines: readMoreGenres ? 100 : 3,
+              textAlign: TextAlign.justify,
+              overflow: TextOverflow.ellipsis,
               ),
-            ),
+            overMultiLine2()
           ],
         ),
       ),
