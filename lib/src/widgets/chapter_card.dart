@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:manga_project/src/pages/viewer/viewer_manga_page.dart';
 
 class ChapterCard extends StatelessWidget {
   
@@ -11,7 +10,6 @@ class ChapterCard extends StatelessWidget {
     return Container(
       width: 150,
       height: 170,
-      // color: Colors.green,
       margin: EdgeInsets.symmetric(horizontal: 10),
       child: Column(
         children: [
