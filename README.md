@@ -1,6 +1,6 @@
 # Manga Project
 
-Aplicación Flutter para leer manga online disponible para dispositivos móbiles
+Aplicación Flutter para leer manga online disponible para dispositivos móbiles.
 
 ## Utilización:
 
