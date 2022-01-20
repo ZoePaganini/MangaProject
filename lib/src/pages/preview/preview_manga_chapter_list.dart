@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:manga_project/src/pojos/manga.dart';
-
 import '../viewer/viewer_manga_page.dart';
 
 class MangaChapters extends StatelessWidget {

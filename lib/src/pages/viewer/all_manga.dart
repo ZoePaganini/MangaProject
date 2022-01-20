@@ -1,4 +1,3 @@
-import 'package:animated_text_kit/animated_text_kit.dart';
 import 'package:flutter/material.dart';
 import 'package:manga_project/src/constants/constants.dart';
 import 'package:manga_project/src/widgets/manga_card.dart';
@@ -53,19 +52,11 @@ class _MangaSlider extends State<MangaSlider> {
             children: [
               Padding(
                 padding: EdgeInsets.symmetric(horizontal: 20),
-                child: /*AnimatedTextKit(
-                  animatedTexts: [
-                    WavyAnimatedText(
-                      widget.genero,
-                      textStyle: (fontSize: 20, fontWeight: FontWeight.bold)
-                    )
-                  ],
-                )*/
-                Text(widget.genero, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
+                child: Text(widget.genero, style: TextStyle(fontSize: 20, fontWeight: FontWeight.bold)),
               ),
-              SizedBox(height: 30,),
+              SizedBox(height: 20,),
               SizedBox(
-                height: 300,
+                height: 302,
                 child: ListView.builder(
                   physics: BouncingScrollPhysics(),
                   scrollDirection: Axis.horizontal,

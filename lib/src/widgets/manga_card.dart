@@ -36,7 +36,7 @@ class MangaCard extends StatelessWidget {
               ),
             ),
           ),
-          //SizedBox(height: ,),
+          SizedBox(height: 5,),
           Text(
             mangaTitle,
             maxLines: 2,

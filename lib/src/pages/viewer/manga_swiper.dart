@@ -74,6 +74,3 @@ class MangaSwiper extends StatelessWidget {
     );
   }
 }
-
-class AnimatedText {
-}

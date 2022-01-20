@@ -60,6 +60,7 @@ class PreviewMangaPage extends StatelessWidget {
                           mangaImg: mangaImg,
                           mangaLink: mangaLink,
                           mangaTitle: mangaTitle,
+                          fromLatest: false,
                           )
                         )
                       )
@@ -80,6 +81,7 @@ class PreviewMangaPage extends StatelessWidget {
                                 mangaImg: mangaImg,
                                 mangaLink: mangaLink,
                                 mangaTitle: mangaTitle,
+                                fromLatest: false,
                                 )))
                         },
                     child: MangaInfoBtn(
